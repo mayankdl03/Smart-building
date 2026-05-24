@@ -1,5 +1,6 @@
 <!-- PLACEHOLDER FOR BANNER IMAGE -->
-![Project Banner](docs/banner.png)
+<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/5551473f-0632-4ad6-acb9-a9e11c7b498e" />
+
 
 # Smart Building IoT API
 
@@ -7,8 +8,9 @@ A high-performance, fault-tolerant RESTful API built with **Spring Boot 3** and 
 
 ## System Architecture
 
-<!-- PLACEHOLDER FOR OVERALL ARCHITECTURE IMAGE -->
-![System Architecture](docs/architecture.png)
+<img width="1692" height="929" alt="image" src="https://github.com/user-attachments/assets/5bd8133f-6c76-4c36-9f83-ca228026219f" />
+
+
 
 ### Key Architectural Patterns:
 - **Event-Driven Architecture (EDA):** Asynchronous event publishing for sensor anomalies (e.g., high temperature alerts) using Spring Events.
@@ -19,7 +21,8 @@ A high-performance, fault-tolerant RESTful API built with **Spring Boot 3** and 
 ## Database Schema
 
 <!-- PLACEHOLDER FOR DATABASE SCHEMA IMAGE -->
-![Database Schema](docs/database-schema.png)
+<img width="1692" height="929" alt="image" src="https://github.com/user-attachments/assets/7f90ee51-49db-44d4-b0ac-17de419f5f26" />
+
 
 The system utilizes a relational database (H2/Hibernate) with strict Auditing (`@CreatedDate`, `@LastModifiedDate`).
 - **Sensor Table:** Stores IoT device metadata (Name, Type, Location, Status).
