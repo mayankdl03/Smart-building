@@ -7,7 +7,7 @@ This project demonstrates advanced software architecture patterns suitable for e
 <!-- PLACEHOLDER FOR MAIN BANNER IMAGE: Add your banner image here -->
 ![Project Banner Banner Placeholder](https://via.placeholder.com/1200x300.png?text=Honeywell+Smart+Building+IoT+API)
 
-## 🏗️ System Architecture
+## System Architecture
 
 ### High-Level Architecture Diagram
 <!-- GitHub will render this Mermaid diagram automatically! -->
@@ -31,7 +31,7 @@ graph TD
 <!-- PLACEHOLDER FOR ARCHITECTURE IMAGE: If you generate a custom diagram image, place it here -->
 <!-- ![System Architecture](docs/architecture.png) -->
 
-## 🌟 Key Features & Architecture
+## Key Features & Architecture
 
 - **Event-Driven Architecture (EDA):** Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners.
 - **Aspect-Oriented Programming (AOP):** Implements cross-cutting concerns (`@Aspect`, `@Around`) for automated API performance profiling and execution time logging.
@@ -46,7 +46,7 @@ graph TD
 - **API Documentation:** OpenAPI 3.0 (Swagger UI)
 - **Tooling:** Maven, Spring Actuator (DevOps Monitoring)
 
-## 🚀 How to Run Locally
+## How to Run Locally
 
 1. Ensure you have **Java 17** installed.
 2. Clone the repository.
@@ -64,7 +64,7 @@ graph TD
 <!-- PLACEHOLDER FOR SWAGGER SCREENSHOT: Add a screenshot of your Swagger UI here -->
 ![Swagger UI Placeholder](https://via.placeholder.com/800x400.png?text=Swagger+UI+Screenshot)
 
-## 📂 API Endpoints
+## API Endpoints
 - `GET /api/sensors` - Retrieve all sensors (Paginated)
 - `GET /api/sensors/{id}` - Retrieve sensor details (Cached)
 - `POST /api/sensors` - Register a new sensor
