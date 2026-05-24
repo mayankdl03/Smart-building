@@ -1,11 +1,11 @@
-# Honeywell Smart Building IoT API
+# Smart Building IoT API
 
 A high-performance, fault-tolerant RESTful API built with **Spring Boot 3** and **Java 17** for managing and monitoring IoT sensors in smart buildings. 
 
 This project demonstrates advanced software architecture patterns suitable for enterprise-grade applications, specifically targeted for IoT and Telemetry use cases.
 
 <!-- PLACEHOLDER FOR MAIN BANNER IMAGE: Add your banner image here -->
-![Project Banner Banner Placeholder](https://via.placeholder.com/1200x300.png?text=Honeywell+Smart+Building+IoT+API)
+![Project Banner Banner Placeholder](https://via.placeholder.com/1200x300.png?text=Smart+Building+IoT+API)
 
 ## System Architecture
 
@@ -21,7 +21,7 @@ graph TD
     Controller --> Service(Sensor Service)
     Service -->|AOP Interceptor| Profiler[Logging Aspect]
     Service -->|Spring Cache| Cache[(RAM Cache)]
-    Service -.->|Simulated Sync with Retry| Cloud[Honeywell Cloud]
+    Service -.->|Simulated Sync with Retry| Cloud[External Cloud API]
     Service -->|Hibernate ORM| Repo(Sensor Repository)
     Repo --> DB[(H2 Database)]
     Job(Scheduled Anomaly Job) -->|Scan Data| Repo
@@ -35,7 +35,7 @@ graph TD
 Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners. When a sensor detects high temperatures, an event is published asynchronously rather than blocking the main thread.
 
 ### 2. Fault Tolerance & Circuit Breaking
-Leverages Spring Retry (`@Retryable`, `@Recover`) to handle transient network failures when syncing data with external cloud providers. If the Honeywell Cloud API is down, the system retries 3 times before triggering a fallback recovery method.
+Leverages Spring Retry (`@Retryable`, `@Recover`) to handle transient network failures when syncing data with external cloud providers. If the External Cloud API is down, the system retries 3 times before triggering a fallback recovery method.
 
 ### 3. Aspect-Oriented Programming (AOP)
 Implements cross-cutting concerns (`@Aspect`, `@Around`) for automated API performance profiling and execution time logging without cluttering business logic.
