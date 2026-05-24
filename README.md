@@ -4,6 +4,33 @@ A high-performance, fault-tolerant RESTful API built with **Spring Boot 3** and 
 
 This project demonstrates advanced software architecture patterns suitable for enterprise-grade applications, specifically targeted for IoT and Telemetry use cases.
 
+<!-- PLACEHOLDER FOR MAIN BANNER IMAGE: Add your banner image here -->
+![Project Banner Banner Placeholder](https://via.placeholder.com/1200x300.png?text=Honeywell+Smart+Building+IoT+API)
+
+## 🏗️ System Architecture
+
+### High-Level Architecture Diagram
+<!-- GitHub will render this Mermaid diagram automatically! -->
+```mermaid
+graph TD
+    Client[Client App / Postman] -->|REST API| Controller(Sensor Controller)
+    Controller --> Service(Sensor Service)
+    
+    Service -->|AOP Interceptor| Profiler[Logging Aspect]
+    Service -->|Spring Cache| Cache[(RAM Cache)]
+    Service -.->|Simulated Sync with Retry| Cloud[Honeywell Cloud]
+    
+    Service -->|Hibernate ORM| Repo(Sensor & Reading Repositories)
+    Repo --> DB[(H2 Database)]
+    
+    Job(Scheduled Anomaly Job) -->|Scan Data| Repo
+    Job -->|Publish| Event[Sensor Anomaly Event]
+    Event --> Listener[Anomaly Alert Listener]
+```
+
+<!-- PLACEHOLDER FOR ARCHITECTURE IMAGE: If you generate a custom diagram image, place it here -->
+<!-- ![System Architecture](docs/architecture.png) -->
+
 ## 🌟 Key Features & Architecture
 
 - **Event-Driven Architecture (EDA):** Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners.
@@ -33,6 +60,9 @@ This project demonstrates advanced software architecture patterns suitable for e
    ```
 4. Access the API Documentation and test the endpoints via Swagger UI:
    👉 **http://localhost:8080/swagger-ui.html**
+
+<!-- PLACEHOLDER FOR SWAGGER SCREENSHOT: Add a screenshot of your Swagger UI here -->
+![Swagger UI Placeholder](https://via.placeholder.com/800x400.png?text=Swagger+UI+Screenshot)
 
 ## 📂 API Endpoints
 - `GET /api/sensors` - Retrieve all sensors (Paginated)
