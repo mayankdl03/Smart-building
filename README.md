@@ -9,36 +9,51 @@ This project demonstrates advanced software architecture patterns suitable for e
 
 ## System Architecture
 
-### High-Level Architecture Diagram
+<!-- OVERALL ARCHITECTURE IMAGE PLACEHOLDER -->
+![Overall System Architecture](docs/overall-architecture.png)
+*(Replace this placeholder with the Overall Architecture Image)*
+
+### High-Level Architecture Flow
 <!-- GitHub will render this Mermaid diagram automatically! -->
 ```mermaid
 graph TD
-    Client[Client App / Postman] -->|REST API| Controller(Sensor Controller)
+    Client[Client App] -->|REST API| Controller(Sensor Controller)
     Controller --> Service(Sensor Service)
-    
     Service -->|AOP Interceptor| Profiler[Logging Aspect]
     Service -->|Spring Cache| Cache[(RAM Cache)]
     Service -.->|Simulated Sync with Retry| Cloud[Honeywell Cloud]
-    
-    Service -->|Hibernate ORM| Repo(Sensor & Reading Repositories)
+    Service -->|Hibernate ORM| Repo(Sensor Repository)
     Repo --> DB[(H2 Database)]
-    
     Job(Scheduled Anomaly Job) -->|Scan Data| Repo
     Job -->|Publish| Event[Sensor Anomaly Event]
     Event --> Listener[Anomaly Alert Listener]
 ```
 
-<!-- PLACEHOLDER FOR ARCHITECTURE IMAGE: If you generate a custom diagram image, place it here -->
-<!-- ![System Architecture](docs/architecture.png) -->
+## Key Features & Component Flows
 
-## Key Features & Architecture
+### 1. Event-Driven Architecture (EDA)
+<!-- EDA IMAGE PLACEHOLDER -->
+![Event-Driven Flow](docs/eda-flow.png)
+*(Replace this placeholder with the EDA Concept Image)*
 
-- **Event-Driven Architecture (EDA):** Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners.
-- **Aspect-Oriented Programming (AOP):** Implements cross-cutting concerns (`@Aspect`, `@Around`) for automated API performance profiling and execution time logging.
-- **Fault Tolerance & Circuit Breaking:** Leverages Spring Retry (`@Retryable`, `@Recover`) to handle transient network failures when syncing data with external cloud providers.
-- **Data Caching:** Integrates Spring Cache (`@Cacheable`, `@CacheEvict`) to reduce database load for frequent sensor data reads.
-- **JPA Auditing & Telemetry:** Tracks sensor history (`@OneToMany`) and automates auditing (`@CreatedDate`, `@LastModifiedDate`).
-- **Data Transfer Objects (DTO):** Isolates internal database entities from the exposed API using the DTO design pattern.
+Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners. When a sensor detects high temperatures, an event is published asynchronously rather than blocking the main thread.
+
+### 2. Fault Tolerance & Circuit Breaking
+<!-- RETRY FLOW IMAGE PLACEHOLDER -->
+![Fault Tolerance Flow](docs/fault-tolerance-flow.png)
+*(Replace this placeholder with the Fault Tolerance Concept Image)*
+
+Leverages Spring Retry (`@Retryable`, `@Recover`) to handle transient network failures when syncing data with external cloud providers. If the Honeywell Cloud API is down, the system retries 3 times before triggering a fallback recovery method.
+
+### 3. Aspect-Oriented Programming (AOP)
+<!-- AOP IMAGE PLACEHOLDER -->
+![AOP Flow](docs/aop-flow.png)
+*(Replace this placeholder with the AOP Concept Image)*
+
+Implements cross-cutting concerns (`@Aspect`, `@Around`) for automated API performance profiling and execution time logging without cluttering business logic.
+
+### 4. Data Caching & Telemetry
+Integrates Spring Cache (`@Cacheable`, `@CacheEvict`) to reduce database load for frequent sensor data reads. Tracks sensor history (`@OneToMany`) and automates auditing (`@CreatedDate`, `@LastModifiedDate`).
 
 ## 🛠️ Technology Stack
 - **Framework:** Spring Boot 3.2.x, Java 17
