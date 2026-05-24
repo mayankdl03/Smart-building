@@ -32,24 +32,12 @@ graph TD
 ## Key Features & Component Flows
 
 ### 1. Event-Driven Architecture (EDA)
-<!-- EDA IMAGE PLACEHOLDER -->
-![Event-Driven Flow](docs/eda-flow.png)
-*(Replace this placeholder with the EDA Concept Image)*
-
 Uses Spring `ApplicationEventPublisher` to decouple anomaly detection from alert notification listeners. When a sensor detects high temperatures, an event is published asynchronously rather than blocking the main thread.
 
 ### 2. Fault Tolerance & Circuit Breaking
-<!-- RETRY FLOW IMAGE PLACEHOLDER -->
-![Fault Tolerance Flow](docs/fault-tolerance-flow.png)
-*(Replace this placeholder with the Fault Tolerance Concept Image)*
-
 Leverages Spring Retry (`@Retryable`, `@Recover`) to handle transient network failures when syncing data with external cloud providers. If the Honeywell Cloud API is down, the system retries 3 times before triggering a fallback recovery method.
 
 ### 3. Aspect-Oriented Programming (AOP)
-<!-- AOP IMAGE PLACEHOLDER -->
-![AOP Flow](docs/aop-flow.png)
-*(Replace this placeholder with the AOP Concept Image)*
-
 Implements cross-cutting concerns (`@Aspect`, `@Around`) for automated API performance profiling and execution time logging without cluttering business logic.
 
 ### 4. Data Caching & Telemetry
